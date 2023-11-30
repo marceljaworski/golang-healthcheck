@@ -4,30 +4,31 @@ import (
 	"fmt"
 	"log"
 	"os"
-"github.com/urfave/cli/v2"
+
+	"github.com/urfave/cli/v2"
 )
 
 func main() {
 	app := &cli.App{
-		Name: "Healthchecker",
-		Usage: "A tiny tool taht checks whether a website is runnning or is down",
+		Name:  "Healthchecker",
+		Usage: "A tiny tool that checks whether a website is runnning or is down",
 		Flags: []cli.Flag{
 			&cli.StringFlag{
-				Name: "domain",
-				Aleases: []string{"d"},
-				Usage: "Domain name to check.",
+				Name:     "domain",
+				Aliases:  []string{"d"},
+				Usage:    "Domain name to check.",
 				Required: true,
 			},
 			&cli.StringFlag{
-				Name: "port",
-				Aliases: []string{"p"},
-				Usage: "Port number to check."
+				Name:     "port",
+				Aliases:  []string{"p"},
+				Usage:    "Port number to check.",
 				Required: false,
 			},
 		},
-		Action: func(c *cli.Context) error{
+		Action: func(c *cli.Context) error {
 			port := c.String("port")
-			if c.String("port") == ""{
+			if c.String("port") == "" {
 				port = "80"
 			}
 			status := Check(c.String("domain"), port)

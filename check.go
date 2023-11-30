@@ -17,5 +17,5 @@ func Check(destination string, port string) string {
 	} else {
 		status = fmt.Sprintf("[UP] %v is reachable,\n From: %v\n To: %v", destination, conn.LocalAddr(), conn.RemoteAddr())
 	}
-	return Status
+	return status
 }
